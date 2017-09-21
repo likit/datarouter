@@ -1,1 +1,2 @@
 We will use specification from http://jsonapi.org/ in this project. Probably via Flask-rest-JSON-API plugin (https://flask-rest-jsonapi.readthedocs.io/en/latest/)
+Mongo DB will be use for persistent storage and CRUD will be performed via mongoengine (http://docs.mongoengine.org/). The model will be abstracted using mashmallow-mongoengine (https://github.com/MongoEngine/marshmallow-mongoengine). The webserver is built using Flask and run on a Docker container.
