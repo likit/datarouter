@@ -2,6 +2,8 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
+# TODO: create a view for client's registration
+
 @app.route('/')
 def index():
     return '<h1>Hello, world!</h1>'
