@@ -23,7 +23,7 @@ class Person(Document):
     licence_id = StringField(max_length=10)
     affiliation = ReferenceField(User)
 
-mt = User(org_id = '12345', org_name= 'Faculty of Medical Technology', postal_code= '73170')
+mt = User(org_id = '99999', org_name= 'Faculty of Medical Technology', postal_code= '73170')
 mt.org_type = 'Academic'
 mt.department = 'Community Medical Technology'
 mt.house_number = '9'
