@@ -1,8 +1,7 @@
 from mongoengine import *
-connect('tumblelog')
+connect('Labdataexchange')
 
-class User(Document):
-    org_id = StringField(required=True)
+class Organization(Document):
     org_name = StringField(max_length=40, required=True)
     org_type = StringField(max_length=40)
     department = StringField(max_length=40)
@@ -16,14 +15,13 @@ class User(Document):
     postal_code = StringField(max_length=5, required=True)
 
 class Person(Document):
-    user_id = StringField(max_length=10, required=True)
     first_name = StringField(max_length=20, required=True)
     last_name = StringField(max_length=20, required=True)
     email = StringField(required=True)
     licence_id = StringField(max_length=10)
-    affiliation = ReferenceField(User)
+    affiliation = ReferenceField(Organization)
 
-mt = User(org_id = '99999', org_name= 'Faculty of Medical Technology', postal_code= '73170')
+mt = Organization(org_name= 'Faculty of Medical Technology', postal_code= '73170')
 mt.org_type = 'Academic'
 mt.department = 'Community Medical Technology'
 mt.house_number = '9'
@@ -33,7 +31,7 @@ mt.district = 'Phutthamonthon'
 mt.province = 'Nakhonpathom'
 mt.save()
 
-sittha = Person(user_id= '5936091', first_name= 'Sittha', last_name= 'Maneemas', email= 'sittha_maneemas@yahoo.com')
+sittha = Person(first_name= 'Sittha', last_name= 'Maneemas', email= 'sittha_maneemas@yahoo.com')
 sittha.licence_id = '10532'
 sittha.affiliation = mt
 sittha.save()
