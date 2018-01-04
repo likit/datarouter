@@ -7,7 +7,7 @@ app.config['SECRET_KEY'] = 'dataroutersecret'
 
 @app.route('/')
 def index():
-    return '<h1>Hello, world!</h1>'
+    return '<h1>Hello, Cortana !</h1>'
 
 
 @app.route('/data')
