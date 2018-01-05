@@ -23,6 +23,7 @@ class ClientTestCase(unittest.TestCase):
         json_response = json.loads(response.data)
         self.assertTrue('message' in json_response)
         self.assertTrue(json_response['message'] == 'No parameters are specified.')
+        self.assertTrue(response.status_code == 400)
 
     def test_register_with_some_params(self):
         params = {'name': 'Mahidol'}
@@ -32,6 +33,17 @@ class ClientTestCase(unittest.TestCase):
         json_response = json.loads(response.data)
         self.assertTrue('message' in json_response)
         self.assertTrue(json_response['message'] == 'success')
+
+    def test_register_with_required_params(self):
+        params = {'postal_code': '10150'}
+        response = self.client.post('/users/orgs/',
+                    data=json.dumps(params),
+                    content_type="application/json")
+        json_response = json.loads(response.data)
+        self.assertTrue('message' in json_response)
+        self.assertTrue(json_response['message'] == 'Required parameters missing')
+        self.assertTrue(response.status_code==400)
+
 
 
 if __name__ == '__main__':
