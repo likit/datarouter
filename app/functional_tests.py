@@ -28,6 +28,12 @@ r = requests.post('http://{0}:{1}/users/orgs/'.format(host_ip, port),
 assert r.status_code == 400
 assert r.json()['message'] == 'Required parameters missing'
 
+# test no first name
+r = requests.post('http://{0}:{1}/users/orgs/'.format(host_ip, port),
+        json={'org_name': 'Mahidol', 'postal_code':'12150'})
+assert r.status_code == 400
+assert r.json()['message'] == 'Required parameters missing'
+
 # test wrong postal code
 r = requests.post('http://{0}:{1}/users/orgs/'.format(host_ip, port),
         json={'postal_code': '101500'})
