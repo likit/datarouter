@@ -15,6 +15,7 @@ port = os.environ.get('PORT', '5550')
 r = requests.post('http://{0}:{1}/users/orgs/'.format(host_ip, port),
         json={})
 assert r.status_code == 400
+assert r.json()['message'] == 'No parameters are specified.'
 
 # test no organization name
 r = requests.post('http://{0}:{1}/users/orgs/'.format(host_ip, port),
@@ -38,16 +39,17 @@ assert r.json()['message'] == 'Required parameters missing'
 r = requests.post('http://{0}:{1}/users/pers/'.format(host_ip, port),
         json={})
 assert r.status_code == 400
+assert r.json()['message'] == 'No parameters are specified.'
 
 # test no first name
 r = requests.post('http://{0}:{1}/users/pers/'.format(host_ip, port),
-        json={'last_name':'Doe'})
+        json={'last_name':'Doe', 'email': 'john_doe@test.com'})
 assert r.status_code == 400
 assert r.json()['message'] == 'Required parameters missing'
 
 # test no last name
 r = requests.post('http://{0}:{1}/users/pers/'.format(host_ip, port),
-        json={'first_name':'John'})
+        json={'first_name':'John', 'email': 'john_doe@test.com'})
 assert r.status_code == 400
 assert r.json()['message'] == 'Required parameters missing'
 
