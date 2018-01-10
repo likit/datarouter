@@ -23,7 +23,7 @@ assert r.status_code == 400
 assert r.json()['message'] == 'Required parameters missing'
 
 # test wrong postal code
-r = requests.post('http://localhost:5550/users/orgs/',
+r = requests.post('http://{0}:{1}/users/orgs/'.format(host_ip, port),
         json={'postal_code': '101500'})
 assert r.status_code == 400
 assert r.json()['message'] == 'Required parameters wrong'
