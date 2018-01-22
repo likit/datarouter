@@ -36,25 +36,25 @@ assert r.status_code == 400
 assert r.json()['message'] == 'Required parameters missing'
 
 # test no parameters for person
-r = requests.post('http://{0}:{1}/users/pers/'.format(host_ip, port),
+r = requests.post('http://{0}:{1}/users/persons/'.format(host_ip, port),
         json={})
 assert r.status_code == 400
 assert r.json()['message'] == 'No parameters are specified.'
 
 # test no first name
-r = requests.post('http://{0}:{1}/users/pers/'.format(host_ip, port),
+r = requests.post('http://{0}:{1}/users/persons/'.format(host_ip, port),
         json={'last_name':'Doe', 'email': 'john_doe@test.com'})
 assert r.status_code == 400
 assert r.json()['message'] == 'Required parameters missing'
 
 # test no last name
-r = requests.post('http://{0}:{1}/users/pers/'.format(host_ip, port),
+r = requests.post('http://{0}:{1}/users/persons/'.format(host_ip, port),
         json={'first_name':'John', 'email': 'john_doe@test.com'})
 assert r.status_code == 400
 assert r.json()['message'] == 'Required parameters missing'
 
 # test no email
-r = requests.post('http://{0}:{1}/users/pers/'.format(host_ip, port),
+r = requests.post('http://{0}:{1}/users/persons/'.format(host_ip, port),
         json={'first_name':'John', 'last_name':'Doe'})
 assert r.status_code == 400
 assert r.json()['message'] == 'Required parameters missing'
