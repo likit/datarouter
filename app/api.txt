@@ -1,0 +1,49 @@
+'''	
+1.Clients registration and users management
+	-Add organizations
+	-Add persons
+	-Edit information
+	-View all members
+	-Delete users
+2.Authentication & Authorization
+	-Obtain token from server
+	-Check token
+3.API registration
+	-Send API registration request
+	-Add API
+	-Change API
+	-View available APIs list
+4.Data request and response
+	-Send data request
+	-Accept data request
+	-Reject data request
+	-Get data
+'''
+
+
+
+	# Add organizations
+	Request: POST /users/orgs HTTP/1.1
+	Content-Type: application/json
+ 
+	{
+	'org_name' : 'Faculty of Medical Technology',
+    'org_type' : 'Academic',
+    'department' : 'Community Medical Technology',
+    'address' : 
+		{
+		'house_number' : '9',
+		'street' : 'Phutthamonthon Sai 4',
+		'subdistrict' : 'Salaya',
+		'district' : 'Phutthamonthon',
+		'province' : 'Nakhonpathom',
+		'postal_code' : '73170'
+		}
+	}
+	
+	Response: HTTP/1.1 201 Created
+			Location: /users/orgs/1
+
+	
+'''
+'''
