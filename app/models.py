@@ -18,6 +18,7 @@ class Person(Document):
     first_name = StringField(max_length=20, required=True)
     last_name = StringField(max_length=20, required=True)
     email = StringField(required=True)
+    password = StringField(required=True)
     licence_id = StringField(max_length=10)
     affiliation = ReferenceField(Organization)
 

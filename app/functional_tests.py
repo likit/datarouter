@@ -59,3 +59,32 @@ r = requests.post('http://{0}:{1}/users/persons/'.format(host_ip, port),
 assert r.status_code == 400
 assert r.json()['message'] == 'Required parameters missing'
 
+# test no password
+r = requests.post('http://{0}:{1}/users/persons/'.format(host_ip, port),
+        json={'first_name':'John', 'last_name':'Doe'})
+assert r.status_code == 400
+assert r.json()['message'] == 'Required parameters missing'
+
+
+# test update informaton
+r = requests.put('http://{0}:{1}/users/persons/'.format(host_ip, port),
+        json={'licence_id':'123456789'})
+assert r.status_code == 200
+assert r.json()['message'] == 'Information updated'
+
+r = requests.put('http://{0}:{1}/users/orgs/'.format(host_ip, port),
+        json={'street':'Phayathai'})
+assert r.status_code == 200
+assert r.json()['message'] == 'Information updated'
+
+# test delete user
+r = requests.delete('http://{0}:{1}/users/persons/'.format(host_ip, port),
+        json={})
+assert r.status_code == 200
+assert r.json()['message'] == 'Deletion succesful'
+
+# test user veiwing
+r = requests.get('http://{0}:{1}/users/'.format(host_ip, port),
+        json={})
+assert r.status_code == 200
+assert r.json()['message'] == 'OK'
